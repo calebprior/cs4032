@@ -1,0 +1,11 @@
+.idea/.name
+.idea/copyright/profiles_settings.xml
+.idea/compiler.xml
+.idea/cs4032.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+.idea/workspace.xml
+out/production/cs4032/EchoClient$.class
+*.class
