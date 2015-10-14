@@ -13,11 +13,12 @@ object EchoClient {
     val out = new PrintWriter(s.getOutputStream)
 
     val message = io.StdIn.readLine("Enter Message> ")
-    out.println("GET /echo.php?message=" + message +" \n")
+    out.println(message)
     out.flush()
 
     println("Sent: " + message)
-    println("Received: " + in.next)
+    while(in.hasNext)
+      println("Received: " + in.next)
     s.close()
   }
 }
