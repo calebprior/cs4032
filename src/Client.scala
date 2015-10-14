@@ -13,7 +13,7 @@ object EchoClient {
     val out = new PrintWriter(s.getOutputStream)
 
     val message = io.StdIn.readLine("Enter Message> ")
-    out.println(message)
+    out.println(message + "\n")
     out.flush()
 
     println("Sent: " + message)

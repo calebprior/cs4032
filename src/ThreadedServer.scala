@@ -69,7 +69,7 @@ class SocketHandler(socket: Socket, shutdown: () => Unit) extends Runnable{
   }
 
   def isKillService(message: String): Boolean ={
-    message.equals("KILL SERVICE")
+    message.equals("KILL_SERVICE")
   }
 
   def killService(): Unit ={
