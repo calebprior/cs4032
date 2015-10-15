@@ -17,10 +17,11 @@ object Server{
     serverSocket = new ServerSocket(Integer.parseInt(port))
     val pool: ExecutorService = Executors.newFixedThreadPool(poolSize)
 
+    println("Server starting on port: " + port + " with thread pool size of: " + poolSize)
     try{
       while(running){
         val socket = serverSocket.accept()
-        println("received")
+        println("Server: Connection Received")
         pool.execute(new SocketHandler(socket, shutdown))
       }
     } catch {
@@ -39,7 +40,7 @@ object Server{
 }
 
 class SocketHandler(socket: Socket, shutdown: () => Unit) extends Runnable{
-  var studentId = "12345678"
+  var studentId = "b486d209d797bffeeb7e1fd3b62923902e4922ddce8eb4cc4646017d1680a52c"
   def helloMsg = "IP:"+ socket.getInetAddress + "\nPort:" + socket.getPort + "\nStudentID:" + studentId + "\n"
   var out : PrintStream = null
 
@@ -49,12 +50,12 @@ class SocketHandler(socket: Socket, shutdown: () => Unit) extends Runnable{
       out = new PrintStream(socket.getOutputStream)
 
       val msg = in.next()
-      println("Thread " + Thread.currentThread.getName + " Received:" + msg)
+      println(Thread.currentThread.getName + " Received:" + msg)
 
       handleMessage(msg)
     } catch {
       case e: Exception =>
-        println("Thread " + Thread.currentThread.getName + " threw Exception:\n" + e)
+        println(Thread.currentThread.getName + " threw Exception:\n" + e)
     } finally {
       socket.close()
     }
