@@ -13,8 +13,8 @@ object Server{
   var serverSocket : ServerSocket = null
 
   def main (args: Array[String]){
-    val port = args(0)
-    serverSocket = new ServerSocket(Integer.parseInt(port))
+    val port = Integer.parseInt(args(0))
+    serverSocket = new ServerSocket(port)
     val pool: ExecutorService = Executors.newFixedThreadPool(poolSize)
 
     println("Server starting on port: " + port + " with thread pool size of: " + poolSize)
