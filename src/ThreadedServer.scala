@@ -41,7 +41,7 @@ object Server{
 
 class SocketHandler(socket: Socket, shutdown: () => Unit) extends Runnable{
   var studentId = "b486d209d797bffeeb7e1fd3b62923902e4922ddce8eb4cc4646017d1680a52c"
-  def helloMsg = "IP:"+ socket.getInetAddress + "\nPort:" + socket.getPort + "\nStudentID:" + studentId + "\n"
+  def helloMsg = "IP:"+ socket.getLocalAddress.toString + "\nPort:" + socket.getPort + "\nStudentID:" + studentId + "\n"
   var out : PrintStream = null
 
   override def run(){
