@@ -22,7 +22,7 @@ object Server{
       while(running){
         val socket = serverSocket.accept()
         println("Server: Connection Received")
-        pool.execute(new SocketHandler(socket, shutdown))
+        pool.execute(new SocketHandler(socket, shutdown, port))
       }
     } catch {
       case e: Exception =>
@@ -39,9 +39,9 @@ object Server{
   }
 }
 
-class SocketHandler(socket: Socket, shutdown: () => Unit) extends Runnable{
+class SocketHandler(socket: Socket, shutdown: () => Unit, port: Int) extends Runnable{
   var studentId = "b486d209d797bffeeb7e1fd3b62923902e4922ddce8eb4cc4646017d1680a52c"
-  def helloMsg = "IP:"+ socket.getLocalAddress.toString.substring(1) + "\nPort:" + socket.getPort + "\nStudentID:" + studentId + "\n"
+  def helloMsg = "IP:"+ socket.getLocalAddress.toString.substring(1) + "\nPort:" + port + "\nStudentID:" + studentId + "\n"
   var out : PrintStream = null
 
   override def run(){
