@@ -54,6 +54,8 @@ class SocketHandler(socket: Socket, shutdown: () => Unit, port: Int) extends Run
       println(Thread.currentThread.getName + " Received:" + msg)
 
       handleMessage(msg)
+
+      socket.close()
     } catch {
       case e: Exception =>
         println(Thread.currentThread.getName + " threw Exception:\n" + e)
