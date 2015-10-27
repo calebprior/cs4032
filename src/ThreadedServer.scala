@@ -32,6 +32,7 @@ object Server{
         serverSocket.close()
       }
     }
+    System.exit(0)
   }
 
   def shutdown(): Unit ={
