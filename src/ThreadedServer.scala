@@ -26,7 +26,7 @@ object Server{
       }
     } catch {
       case e: Exception =>
-        pool.shutdownNow()
+        pool.shutdown()
     } finally {
       if(serverSocket != null){
         serverSocket.close()
