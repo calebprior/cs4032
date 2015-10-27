@@ -9,7 +9,7 @@ import scala.io.BufferedSource
  */
 object Server{
   var poolSize = 8
-  val running = true
+  var running = true
   var serverSocket : ServerSocket = null
 
   def main (args: Array[String]){
@@ -26,6 +26,7 @@ object Server{
       }
     } catch {
       case e: Exception =>
+        running = false;
         pool.shutdown()
     } finally {
       if(serverSocket != null){
@@ -60,7 +61,9 @@ class SocketHandler(socket: Socket, shutdown: () => Unit, port: Int) extends Run
       case e: Exception =>
         println(Thread.currentThread.getName + " threw Exception:\n" + e)
     } finally {
-      socket.close()
+      if(socket != null){
+        socket.close()
+      }
     }
   }
 
