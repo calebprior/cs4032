@@ -8,7 +8,7 @@ import scala.io.BufferedSource
  */
 object EchoClient {
   def main(args: Array[String]) {
-    val s = new Socket(InetAddress.getByName("localhost"), 9000)
+    val s = new Socket(InetAddress.getByName("178.62.121.108"), 443)
     lazy val in = new BufferedSource(s.getInputStream).getLines()
     val out = new PrintWriter(s.getOutputStream)
 
